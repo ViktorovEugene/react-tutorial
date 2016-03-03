@@ -11,30 +11,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
     </head>
     <body>
-        <h1>Stocks</h1>
-        <table class="best_buy" width="100%">
-            <caption>
-                Best-Buy
-            </caption>
-            <colgroup>
-                <col id="rank">
-                <col id="instrument_code">
-                <col id="currency">
-                <col id="buy">
-                <col id="sell">
-            </colgroup>
-            <thead>
-                <tr>
-                    <th scope="col">Rank</th>
-                    <th scope="col">Instrument Code</th>
-                    <th scope="col">Currency</th>
-                    <th scope="col">Buy</th>
-                    <th scope="col">Sell</th>
-                </tr>
-            </thead>
-            <tbody id="best_buy_content">
-            </tbody>
-        </table>
+        <div id="best_buy"></div>
         <script type="text/babel" src="scripts/table.js"></script>
     </body>
 </html>

@@ -30,13 +30,14 @@ body {
 	margin: 0 auto;
 }
 
-h1 {
-	font: italic normal 3em Baskerville, "Palatino Linotype", "Times New Roman", serif;
+caption {
+	font: bold normal 2em Baskerville, "Palatino Linotype", "Times New Roman", serif;
 	padding-left: 2px;
 }
 table {
 	border: 1px solid black;
 	border-collapse: collapse;
+  width: 100%;
 }
 
 thead {
@@ -51,6 +52,3 @@ td {
 	padding: 4px;
 }
 
-.best_by {
-  width: 100%;
-}

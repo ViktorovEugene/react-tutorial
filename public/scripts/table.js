@@ -30,7 +30,7 @@ var BestBuyTable = React.createClass({
                   <th scope="col">Sell</th>
               </tr>
           </thead>
-          <BestBuyTableRows />
+          <BestBuyTableRows data={this.props.data} />
       </table>
     );
   }
@@ -38,10 +38,20 @@ var BestBuyTable = React.createClass({
 
 var BestBuyTableRows = React.createClass({
   render: function() {
+    var table_rows = this.props.data.map(function(row_data) {
+      return (
+        <BestBuyTableRow rank={row_data.rank}
+                         instrumentcode={row_data.instrumentcode}
+                         currency={row_data.currency}
+                         buy={row_data.buy}
+                         sell={row_data.sell}>
+        </BestBuyTableRow>
+      );
+    });
+
     return (
       <tbody>
-        <BestBuyTableRow rank="2" instrumentcode="8604" currency="JPY" buy="0.65" sell="0.18">
-        </BestBuyTableRow>
+        {table_rows}
       </tbody>
     );
   }
@@ -62,6 +72,6 @@ var BestBuyTableRow = React.createClass({
 });
 
 ReactDOM.render(
-  <BestBuyTable />,
+  <BestBuyTable data={data}/>,
   document.getElementById('best_buy')
 );

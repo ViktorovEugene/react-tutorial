@@ -11,6 +11,7 @@
 import json
 import os
 import time
+import random
 from flask import Flask, Response, request
 
 app = Flask(__name__, static_url_path='', static_folder='public')
@@ -22,6 +23,11 @@ def comments_handler():
 
     with open('comments.json', 'r') as file:
         comments = json.loads(file.read())
+    for item in comments:
+        item['instrumentcode'] = random.randint(8000, 9000)
+
+    with open('comments.json', 'w') as file:
+        file.write(json.dumps(comments, indent=4, separators=(',', ': ')))
 
     if request.method == 'POST':
         newComment = request.form.to_dict()

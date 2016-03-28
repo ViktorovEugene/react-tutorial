@@ -7,11 +7,12 @@ var data = [
 
 var CommentBox = React.createClass({
   render: function() {
+    var items = this.props.data.map(function(item, id) {
+      return <p key={id}><span>{item[0]}: </span>{item[1]}</p>;
+    });
     return (
         <header>
-          <p><span>Date: </span>{this.props.data[0][1]}</p>
-          <p><span>Tick: </span>{this.props.data[1][1]}</p>
-          <p><span>TimeStamp: </span>{this.props.data[2][1]}</p>
+          {items}
         </header>
     );
   }

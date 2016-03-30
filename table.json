@@ -1,0 +1,5 @@
+[
+    {"name": "Eggs", "value": 100, "boolean": "True"},
+    {"name": "Spam", "value": 340, "boolean": "True"},
+    {"name": "Foo", "value": 1000, "boolean": "False"}
+]

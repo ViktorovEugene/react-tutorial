@@ -26,11 +26,12 @@ ul {
 /* end reset browser styles */
 html {
   background-color: #86989B;
+  height: 100%;
 }
 
 body {
   width: 750px;
-  height: 100vh;
+  height: 100%;
   margin: 0 auto;
   background-color: rgb(252, 245, 223);
   padding: 20px;

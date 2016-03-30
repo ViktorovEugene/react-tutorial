@@ -33,14 +33,23 @@ var Table = React.createClass({
 });
 
 var TableRows = React.createClass({
-
+  getInitialState: function() {
+    return {selectedRow: null};
+  },
+  setSelectRow: function(clickedRow) {
+    if (this.state.selectedRow) {
+      this.state.selectedRow.setState({className: ''});
+    }
+    this.setState({selectedRow: clickedRow})
+  },
   render: function() {
     var rows = this.props.data.map(function(item, index) {
-      console.log(item);
       return (
-        <SingleTableRow key={index} data={item} />
+        <SingleTableRow key={index}
+                        data={item}
+                        setSelectRow={this.setSelectRow} />
       );
-    }
+    }.bind(this)
     );
     return (
       <tbody>
@@ -57,9 +66,10 @@ var SingleTableRow = React.createClass({
   handleRowClick: function() {
     var className = this.state.className.trim();
     if (className == 'selected') {
-      this.setState({className: ''});
+      return;
     } else {
-      this.setState({className: 'selected'})
+      this.props.setSelectRow(this);
+      this.setState({className: 'selected'});
     }
   },
   render: function() {

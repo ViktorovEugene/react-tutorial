@@ -51,3 +51,7 @@ td {
 thead {
    background-color: #C2EAC5;
 }
+
+.selected {
+  background-color: gray;
+}

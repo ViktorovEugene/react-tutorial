@@ -26,28 +26,51 @@ var Table = React.createClass({
             <td>Boolean</td>
           </tr>
         </thead>
-        <TableDataRows data={this.state.data} />
+        <TableRows data={this.state.data} />
       </table>
     );
   }
 });
 
-var TableDataRows = React.createClass({
+var TableRows = React.createClass({
+
   render: function() {
     var rows = this.props.data.map(function(item, index) {
+      console.log(item);
       return (
-        <tr key={index}>
-          <td>{item.name}</td>
-          <td>{item.value}</td>
-          <td>{item.boolean}</td>
-        </tr>
+        <SingleTableRow key={index} data={item} />
       );
-    });
+    }
+    );
     return (
       <tbody>
         {rows}
       </tbody>
     )
+  }
+});
+
+var SingleTableRow = React.createClass({
+  getInitialState: function() {
+    return { className: '' };
+  },
+  handleRowClick: function() {
+    var className = this.state.className.trim();
+    if (className == 'selected') {
+      this.setState({className: ''});
+    } else {
+      this.setState({className: 'selected'})
+    }
+  },
+  render: function() {
+    return (
+        <tr className={this.state.className}
+            onClick={this.handleRowClick}>
+          <td>{this.props.data.name}</td>
+          <td>{this.props.data.value}</td>
+          <td>{this.props.data.boolean}</td>
+        </tr>
+      );
   }
 });
 

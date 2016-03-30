@@ -1,3 +1,9 @@
+var tableData = [
+  {name: "Eggs", value: 15, boolean: "True"},
+  {name: 'Spam',value: 30, boolean: 'True'},
+  {name: 'Foo', value: 1000, boolean: 'False'}
+];
+
 var Table = React.createClass({
   render: function() {
     return (
@@ -10,7 +16,7 @@ var Table = React.createClass({
             <td>Boolean</td>
           </tr>
         </thead>
-        <TableDataRows />
+        <TableDataRows data={this.props.data} />
       </table>
     );
   }
@@ -20,27 +26,21 @@ var TableDataRows = React.createClass({
   render: function() {
     return (
       <tbody>
-        <tr>
-          <td>Eggs</td>
-          <td>10</td>
-          <td>True</td>
-        </tr>
-        <tr>
-          <td>spam</td>
-          <td>5</td>
-          <td>True</td>
-        </tr>
-        <tr>
-          <td>foo</td>
-          <td>1000</td>
-          <td>False</td>
-        </tr>
+        {this.props.data.map(function(item, index) {
+          return (
+            <tr key={index}>
+              <td>{item.name}</td>
+              <td>{item.value}</td>
+              <td>{item.boolean}</td>
+            </tr>
+          );
+        })}
       </tbody>
     )
   }
 });
 
 ReactDOM.render(
-  <Table/>,
+  <Table data={tableData} />,
   document.getElementById('content')
 );

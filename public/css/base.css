@@ -2,8 +2,18 @@ body{
   background-color: darkkhaki;
 }
 main {
+  margin: 0 auto;
+  width: 400px;
+  padding: 20px;
   background-color: #b7faee;
 }
 p {
+  padding: 3px 0;
+  text-align: center;
   background-color: #BFDDE0;
+  border: 2px dashed #3a5dff;
+}
+
+.selected {
+  background-color: greenyellow;
 }

@@ -4,25 +4,41 @@ var MyContainer = React.createClass({
   getInitialState: function() {
     return {value: '0'}
   },
+  handleChange: function(event) {
+    this.setState({value: event.target.value});
+  },
   render: function() {
-      console.log(this);
-      return <MyChild value={this.state.value}
-                      data={this.props.data} />
+      return (
+        <main>
+          <input type="number"
+                 min="0"
+                 max={this.props.data.length - 1}
+                 value={this.state.value}
+                 onChange={this.handleChange}
+          />
+          <MyChild value={this.state.value}
+                   data={this.props.data} />
+        </main>
+      )
   }
 });
 
 var MyChild = React.createClass({
     render: function() {
       var items = this.props.data.map(function(element, index) {
-        return <p key={index}>{"data[" + index+ "]: " + element}</p>
-      });
-      console.log(items);
-      console.log(this.props.data);
+          return (
+            <p key={index}
+               className={this.props.value == index ? 'selected' : null}
+            >
+              {"data[" + index+ "]: " + element}
+            </p>
+          )
+        }.bind(this)
+      );
       return (
-        <main>
-          <h1>{"VAlue: " + this.props.value}</h1>
+        <div>
           {items}
-        </main>
+        </div>
       )
     }
 });

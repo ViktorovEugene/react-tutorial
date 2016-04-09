@@ -5,10 +5,20 @@ var MyContainer = React.createClass({
     return {value: '0'}
   },
   handleChange: function(event) {
+    var ref_name = "index_" + event.target.value;
     this.setState({value: event.target.value});
-    this.refs.ownee.setState({selectedItem: event.target.value});
-    console.log(this.refs.ownee.refs);
-
+    this.refs[ref_name].setState({selected: true});
+    console.log("* handle change call");
+  },
+  makeComponentsByData: function() {
+    console.log("* makeComponent call!");
+    return this.props.data.map(function(element, index) {
+        return <MyChild key={index}
+                        ref={"index_" + index}
+                        element={element}
+                        index={index} />
+      }.bind(this)
+    )
   },
   render: function() {
     return (
@@ -19,9 +29,7 @@ var MyContainer = React.createClass({
                value={this.state.value}
                onChange={this.handleChange}
         />
-        <MyChild ref="ownee"
-          value={this.state.value}
-                 data={this.props.data} />
+        {this.makeComponentsByData()}
       </main>
     )
   }
@@ -29,25 +37,13 @@ var MyContainer = React.createClass({
 
 var MyChild = React.createClass({
   getInitialState: function() {
-    return {selectedItem: null};
+    return {selected: false};
   },
   render: function() {
-    var items = this.props.data.map(function(element, index) {
-        return (
-          <p key={index}
-             ref={"index_" + index}
-             className={this.state.selectedItem == index ? 'selected' : null}
-          >
-            {"data[" + index+ "]: " + element}
-          </p>
-        )
-      }.bind(this)
-    );
-    return (
-      <div>
-        {items}
-      </div>
-    )
+    console.log("* render P!");
+    return <p className={this.state.selected ? 'selected' : null}>
+              {"data[" + this.props.index+ "]: " + this.props.element}
+           </p>
   }
 });
 

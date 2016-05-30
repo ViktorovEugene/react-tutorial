@@ -10,9 +10,15 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "browserify": "latest",
+    "watchify": "latest"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-js": "browserify -t [ babelify ] main.js -o bundle.js",
+    "watch-js": "watchify react_components/*.js -o \"browserify -t [ babelify ] main.js > bundle.js\" -d"
+
   },
   "author": "",
   "license": "ISC"

@@ -1,1 +1,1 @@
-module.exports = 'Jeka';
+module.exports = 'Eugene (Jeka)';

@@ -16,8 +16,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-js": "browserify -t [ babelify ] main.js -o bundle.js",
-    "watch-js": "watchify react_components/*.js -o \"browserify -t [ babelify ] main.js > bundle.js\" -d"
+    "build-js": "browserify -t [ babelify ] main.js -o bundle.js -d",
+    "watch-js": "watchify react_components/*.js -o \"browserify -t [ babelify ] main.js -d > bundle.js\""
 
   },
   "author": "",
